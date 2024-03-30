@@ -1,0 +1,20 @@
+package layout
+
+import "gihub.com/luytbq/ksjwf/view/ui"
+
+templ App() {
+    <!DOCTYPE html>
+    <html lang="en" data-theme="dark">
+        <head>
+            <title>My App</title>
+        </head>
+
+        <body>
+
+        @ui.Navigation()
+
+        { children... }
+        </body>
+
+    </html>
+}

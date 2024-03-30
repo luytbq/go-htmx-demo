@@ -20,5 +20,16 @@
 # Go workspace file
 go.work
 
-
 .env
+
+# air generated files
+tmp/
+
+# node_modules
+node_modules/
+
+# vendor
+vendor/
+
+# templ generated files
+*_templ.go

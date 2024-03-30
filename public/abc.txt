@@ -1,2 +1,0 @@
-lskjdflskdjfdlksjdf
-/home/luytbq/Documents/projects/go-htmx-demo/public/abc.txt

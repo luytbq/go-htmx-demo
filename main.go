@@ -22,7 +22,8 @@ func main() {
 
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
-	router.Get("/", handler.Make(handler.HandleHomeIndex))
+
+	setupRouter(router)
 
 	fs := http.FileServer(http.Dir(staticPath))
 	router.Handle("/static/*", http.StripPrefix("/static/", fs))
@@ -30,6 +31,12 @@ func main() {
 	slog.Info("Server is running:", "port", port)
 	slog.Info("File Server:", "dir", staticPath)
 	http.ListenAndServe(":"+port, router)
+}
+
+func setupRouter(router *chi.Mux) {
+	router.Get("/", handler.Make(handler.HandleHomeIndex))
+	router.Get("/login", handler.Make(handler.HandleLoginIndex))
+	router.Post("/login", handler.Make(handler.HandleLoginPost))
 }
 
 func initEverything() error {

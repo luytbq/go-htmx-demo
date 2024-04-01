@@ -2,10 +2,11 @@ package home
 
 import (
     "gihub.com/luytbq/ksjwf/view/layout"
+    "gihub.com/luytbq/ksjwf/types"
 )
 
-templ Index() {
-    @layout.App() {
+templ Index(authenticatedUser types.AuthenticatedUser) {
+    @layout.App(types.LayoutProps{ShowNavigation: true}, authenticatedUser) {
         <h1 class="text-xl">Home index page</h1>
     }
 }

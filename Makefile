@@ -1,3 +1,6 @@
+run: build
+	./bin/app
+
 build:
 	@tailwindcss -i view/css/app.css -o static/styles.css
 	templ generate view

@@ -1,6 +1,10 @@
 package ui
 
-templ Navigation() {
+import (
+  "gihub.com/luytbq/ksjwf/types";
+)
+
+templ Navigation(authenticatedUser types.AuthenticatedUser) {
 <div class="navbar border-b border-gray-900">
   <div class="flex-1">
     <a class="btn btn-ghost text-xl">Hello</a>
@@ -23,6 +27,7 @@ templ Navigation() {
     //     </div>
     //   </div>
     // </div>
+    if authenticatedUser.IsLoggedIn {
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
@@ -40,6 +45,9 @@ templ Navigation() {
     //     <li><a>Logout</a></li>
     //   </ul>
     </div>
+    } else {
+      <a href="/login" class="btn btn-ghost">Login</a>
+    }
   </div>
 </div>
 }

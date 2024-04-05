@@ -1,4 +1,4 @@
-module gihub.com/luytbq/ksjwf
+module github.com/luytbq/ksjwf
 
 go 1.21.5
 

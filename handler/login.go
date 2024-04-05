@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"net/http"
 
-	"gihub.com/luytbq/ksjwf/types"
-	"gihub.com/luytbq/ksjwf/view/login"
+	"github.com/luytbq/ksjwf/types"
+	"github.com/luytbq/ksjwf/view/login"
 )
 
 func HandleLoginIndex(w http.ResponseWriter, r *http.Request) error {

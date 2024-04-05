@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"os"
 
-	"gihub.com/luytbq/ksjwf/handler"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
+	"github.com/luytbq/ksjwf/handler"
 )
 
 func main() {
@@ -37,6 +37,7 @@ func setupRouter(router *chi.Mux) {
 	router.Get("/", handler.Make(handler.HandleHomeIndex))
 	router.Get("/login", handler.Make(handler.HandleLoginIndex))
 	router.Post("/login", handler.Make(handler.HandleLoginPost))
+	router.Get("/signup", handler.Make(handler.HandleSignupIndex))
 }
 
 func initEverything() error {

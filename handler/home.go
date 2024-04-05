@@ -3,8 +3,8 @@ package handler
 import (
 	"net/http"
 
-	"gihub.com/luytbq/ksjwf/types"
-	"gihub.com/luytbq/ksjwf/view/home"
+	"github.com/luytbq/ksjwf/types"
+	"github.com/luytbq/ksjwf/view/home"
 )
 
 func HandleHomeIndex(w http.ResponseWriter, r *http.Request) error {

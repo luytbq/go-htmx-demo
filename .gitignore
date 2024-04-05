@@ -38,4 +38,4 @@ vendor/
 bin/app
 
 # generated tailwind css
-#static/styles.css
+static/styles.css

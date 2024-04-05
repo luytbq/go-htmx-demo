@@ -36,3 +36,6 @@ vendor/
 
 # app binary file
 bin/app
+
+# generated tailwind css
+static/styles.css

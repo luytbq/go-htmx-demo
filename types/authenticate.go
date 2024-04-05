@@ -20,3 +20,13 @@ type LoginError struct {
 type LoginCredentials struct {
 	Email string
 }
+
+type SignupCredentials struct {
+	Email string
+}
+
+type SignupError struct {
+	EmailError           string
+	PasswordError        string
+	ConfirmPasswordError string
+}

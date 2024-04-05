@@ -28,5 +28,23 @@ templ App(layoutProps types.LayoutProps, authenticatedUser types.AuthenticatedUs
 
     { children... }
   </body>
+
+  if (layoutProps.Redirect) {
+    // <h2> redirecting... </h2>
+    @redirectScript()
+  } else {
+    // <h2> not redirecting... </h2>
+  }
 </html>
+}
+
+templ redirectScript() {
+  <script>
+  window.onload = function() {
+    console.log("Redirecting to {layoutProps.Redirect}");
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 3000);
+  }
+  </script>
 }

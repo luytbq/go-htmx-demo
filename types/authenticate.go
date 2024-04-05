@@ -4,6 +4,8 @@ const AUTHENTICATED_USER_KEY = "authenticatedUser"
 
 type LayoutProps struct {
 	ShowNavigation bool
+	Redirect       bool
+	RedirectURL    string
 }
 
 type AuthenticatedUser struct {
@@ -18,11 +20,13 @@ type LoginError struct {
 }
 
 type LoginCredentials struct {
-	Email string
+	Email    string
+	Password string
 }
 
 type SignupCredentials struct {
-	Email string
+	Email    string
+	Password string
 }
 
 type SignupError struct {

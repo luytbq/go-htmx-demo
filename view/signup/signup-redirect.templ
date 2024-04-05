@@ -1,0 +1,19 @@
+package signup
+
+import (
+    "github.com/luytbq/ksjwf/view/layout"
+    "github.com/luytbq/ksjwf/types"
+)
+
+templ SignupRedirectIndex() {
+    @layout.App(types.LayoutProps{
+        ShowNavigation: false,
+        Redirect: true,
+        RedirectURL: "/login",
+        }, types.AuthenticatedUser{}) {
+    <div class="bg-neutral px-6 py-10 space-y-6">
+        <h2 class="text-2xl pb-4 color-primary font-bold text-center">Sign up with CaroGame</h2>
+        <p>You will be redirect to the Login page</p>
+    </div>
+    }
+}

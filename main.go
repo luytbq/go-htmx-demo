@@ -38,6 +38,8 @@ func setupRouter(router *chi.Mux) {
 	router.Get("/login", handler.Make(handler.HandleLoginIndex))
 	router.Post("/login", handler.Make(handler.HandleLoginPost))
 	router.Get("/signup", handler.Make(handler.HandleSignupIndex))
+	router.Post("/signup", handler.Make(handler.HandleSignupPost))
+	router.Get("/signup/redirect", handler.Make(handler.HandleSignupRedirectIndex))
 }
 
 func initEverything() error {

@@ -87,7 +87,7 @@ func TestValidatePassword(t *testing.T) {
 			wantMsg:  passwordEmptyMsg,
 		},
 		{
-			name:     "TestValidatePassword #3",
+			name:     "TestValidatePassword #2",
 			password: "1",
 			wantOk:   false,
 			wantMsg:  passwordTooShortMsg,

@@ -2,14 +2,22 @@ package validate
 
 import "regexp"
 
+const (
+	emptyString         = ""
+	emailEmptyMsg       = "Email must not be empty"
+	emailInvalidMsg     = "Email is not valid"
+	passwordEmptyMsg    = "Password must not be empty"
+	passwordTooShortMsg = "Password must be at least 8 characters"
+)
+
 func ValidateEmail(email string) (ok bool, msg string) {
 	if len(email) == 0 {
-		msg = "Email must not be empty"
+		msg = emailEmptyMsg
 		return
 	}
 	regexpEmail := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
 	if !regexpEmail.MatchString(email) {
-		msg = "Email is not valid"
+		msg = emailInvalidMsg
 		return
 	}
 	ok = true
@@ -18,13 +26,13 @@ func ValidateEmail(email string) (ok bool, msg string) {
 
 func ValidatePassword(password string) (ok bool, msg string) {
 	if len(password) == 0 {
-		msg = "Password must not be empty"
+		msg = passwordEmptyMsg
 		return
 	}
 
 	regexpPassword := regexp.MustCompile(`^.{8,}$`)
 	if !regexpPassword.MatchString(password) {
-		msg = "Password must be at least 8 characters"
+		msg = passwordTooShortMsg
 		return
 	}
 	ok = true

@@ -2,14 +2,6 @@ package validate
 
 import "testing"
 
-const (
-	emptyString         = ""
-	emailEmptyMsg       = "Email must not be empty"
-	emailInvalidMsg     = "Email is not valid"
-	passwordEmptyMsg    = "Password must not be empty"
-	passwordTooShortMsg = "Password must be at least 8 characters"
-)
-
 func TestValidateEmail(t *testing.T) {
 	tests := []struct {
 		name    string

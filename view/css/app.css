@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+    .auth-form {
+        @apply w-full sm:w-[620px] bg-neutral rounded-lg px-6 py-10 space-y-6;
+    }

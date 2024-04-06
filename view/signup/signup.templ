@@ -8,13 +8,13 @@ import (
 templ SignupIndex(signupCreds types.SignupCredentials, signupError types.SignupError) {
     @layout.App(types.LayoutProps{ShowNavigation: false}, types.AuthenticatedUser{}) {
     <div class="flex h-screen justify-center items-center">
-        @signupForm(signupCreds, signupError)
+        @SignupForm(signupCreds, signupError)
     </div>
     }
 }
 
-templ signupForm(signupCreds types.SignupCredentials, signupError types.SignupError) {
-<form class="w-[550px] xs:w-auto bg-neutral rounded-lg px-6 py-10 space-y-6"
+templ SignupForm(signupCreds types.SignupCredentials, signupError types.SignupError) {
+<form class="auth-form"
     hx-post="/signup"
     hx-swap="outerHTML"
 >

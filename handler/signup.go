@@ -21,11 +21,11 @@ func HandleSignupPost(w http.ResponseWriter, r *http.Request) error {
 	slog.Info("SignupError", "email", signupError.EmailError, "password", signupError.PasswordError, "confirmPassword", signupError.ConfirmPasswordError)
 
 	if err != nil {
-		return signup.SignupIndex(signupCredential, signupError).Render(r.Context(), w)
+		return signup.SignupForm(signupCredential, signupError).Render(r.Context(), w)
 	}
 
 	w.Header().Set("Hx-Redirect", "/signup/redirect")
-	return signup.SignupIndex(signupCredential, signupError).Render(r.Context(), w)
+	return nil
 }
 
 func validateSignup(email, password, confirmPassword string) (signinCreds types.SignupCredentials, signupError types.SignupError, err error) {

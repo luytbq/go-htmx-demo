@@ -2,10 +2,10 @@ package handler
 
 import (
 	"fmt"
-	"log/slog"
 	"net/http"
 
 	"github.com/luytbq/ksjwf/types"
+	"github.com/luytbq/ksjwf/util/validate"
 	"github.com/luytbq/ksjwf/view/signup"
 )
 
@@ -16,10 +16,6 @@ func HandleSignupIndex(w http.ResponseWriter, r *http.Request) error {
 func HandleSignupPost(w http.ResponseWriter, r *http.Request) error {
 	signupCredential, signupError, err := validateSignup(r.FormValue("email"), r.FormValue("password"), r.FormValue("confirmPassword"))
 
-	slog.Info("HandleSignupPost", "email", r.FormValue("email"), "password", r.FormValue("password"), "confirmPassword", r.FormValue("confirmPassword"))
-	slog.Info("SignupCredential", "email", signupCredential.Email)
-	slog.Info("SignupError", "email", signupError.EmailError, "password", signupError.PasswordError, "confirmPassword", signupError.ConfirmPasswordError)
-
 	if err != nil {
 		return signup.SignupForm(signupCredential, signupError).Render(r.Context(), w)
 	}
@@ -28,26 +24,22 @@ func HandleSignupPost(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func validateSignup(email, password, confirmPassword string) (signinCreds types.SignupCredentials, signupError types.SignupError, err error) {
-	signinCreds = types.SignupCredentials{Email: email}
+func validateSignup(email, password, confirmPassword string) (signupCreds types.SignupCredentials, signupError types.SignupError, err error) {
+	signupCreds = types.SignupCredentials{Email: email}
 
-	// check if email is empty
-	if len(email) == 0 {
-		msg := "Email is required"
-		signupError = types.SignupError{EmailError: msg}
+	if ok, msg := validate.ValidateEmail(email); !ok {
+		signupError.EmailError = msg
 		err = fmt.Errorf(msg)
 		return
 	}
 
-	// check if password is empty
-	if len(password) == 0 {
-		msg := "Password is required"
-		signupError = types.SignupError{PasswordError: msg}
+	if ok, msg := validate.ValidatePassword(password); !ok {
+		signupError.PasswordError = msg
 		err = fmt.Errorf(msg)
 		return
 	}
 
-	signinCreds.Password = password
+	signupCreds.Password = password
 
 	// check if password and confirm password are the same
 	if password != confirmPassword {
